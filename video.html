@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>L27 - 360° video</title>
+    <title>HighBridge - 360° video test</title>
     <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
   <!-- UPDATE YOUR 360° VIDEO'S ID -->
     <script>
     AFRAME.registerComponent('play-pause', {
       init: function () {
-        var myVideo = document.querySelector('#YOUR-360VIDEO-ID');
+        var myVideo = document.querySelector('#PokemonCenter');
         var videoControls = document.querySelector('#videoControls');
         this.el.addEventListener('click', function () {
           if (myVideo.paused) {
@@ -28,9 +28,12 @@
         <!-- Asset Management System -->
     <!-- DOWNLOAD, PRELOAD YOUR 360° VIDEO, AND UPDATE ITS ID AND FILE NAME -->
         <a-assets>
-      <img id="play" src="Assets/play.png">
+          <img id="play" src="Assets/play.png">
           <img id="pause" src="Assets/pause.png">
-          <video id="YOUR-360VIDEO-ID" src="Assets/PokemonCenterAnimated.mp4" loop="true"></video>
+          <video id="PokemonCenter" src="Assets/PokemonCenterAnimated.mp4" loop="true"></video>
+          <!-- <video id="PokemonCave" src="Assets/PokemonCave.mp4" loop="true"></video> -->
+          <!-- <video id="PokemonTown" src="Assets/PalletTown.mp4" loop="true"></video> -->
+
         </a-assets>
     
     <!-- Camera -->
@@ -40,7 +43,7 @@
     
     <!-- 360° Video -->
     <!-- UPDATE YOUR 360° VIDEO'S ID -->
-    <a-videosphere src="#YOUR-360VIDEO-ID" rotation="0 -80 0"></a-videosphere>
+    <a-videosphere src="#PokemonCenter" rotation="0 -80 0"></a-videosphere>
     
     <!-- Play-Pause -->
     <a-image id="videoControls" src="#play" position="0 1 -2" scale="0.2 0.2 1"
