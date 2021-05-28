@@ -1,15 +1,102 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <title>Laser input UI</title>
+    <meta name="description" content="Laser input UI • A-Frame">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!-- <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script> -->
+    <!-- <script src="../../js/info-message.js"></script> -->
+    <script src="./data/config.js"></script>
+    <script src="highlight.js"></script>
+    <script src="info-panel.js"></script>
+    <script src="room.js"></script>     
   </head>
   <body>
-    <a-scene>
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-      <a-sky src="https://i.ibb.co/Qdm3FHq/Ambush-Alley-BKG-5.jpg" rotation="0 -130 0"></a-sky>
+    <a-scene
+      background="color: #212"
+      id="parent"
+      room
+      webxr="referenceSpaceType: local"
+      cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable"
+      info-message="htmlSrc: #messageText">
+      <a-assets>
+        <!-- <img id="ponyo" src="https://cdn.aframe.io/examples/ui/ponyo.jpg" crossorigin="anonymous"/> -->
+        <img id="nav" src="https://i.ibb.co/MBtLk6z/ARROW.png" crossorigin="anonymous"/>
+        <img id="bow" src="https://i.ibb.co/92RYRcW/BOW.png" crossorigin="anonymous"/>
+
+        <img id="modalImg" src="https://i.ibb.co/z6hR1Ys/OUTSIDE-CASTLE-ROOM-POPUP.jpg" crossorigin="anonymous" />
+
+        <!-- <video id="PokemonCenter" src="Assets/PalletTown.mp4" loop="true"></video> -->
+
+        <img id="karigurashi" src="https://i.ibb.co/THfrtWt/Riddle-1-book-back-cover.png" crossorigin="anonymous"/>
+        <img id="karigurashiPoster" src="https://i.ibb.co/0BSKCkq/Riddle-1-book-front-cover.png" crossorigin="anonymous"/>
+        <a-mixin
+          id="frame"
+          geometry="primitive: plane; width: 2.5; height: 3"
+          material="color: white; shader: flat"
+          animation__scale="property: scale; to: 1.2 1.2 1.2; dur: 200; startEvents: mouseenter"
+          animation__scale_reverse="property: scale; to: 1 1 1; dur: 200; startEvents: mouseleave"
+         ></a-mixin>
+         <a-mixin
+          id="text"
+          geometry="primitive: plane; width: 3; height: 0.9"
+          material="color: #edd4b4; shader: flat"
+          position="0 -1.55 0"
+          ></a-mixin>
+         <a-mixin
+          id="poster"
+          geometry="primitive: plane; width: 0.544768; height: 0.786432"
+          material="color: white; shader: flat"
+          material="shader: flat"
+          position="0 0 0.005"
+         ></a-mixin>
+         <a-mixin
+          id="navs"
+          geometry="primitive: plane;"
+          material="opacity: 0"
+          animation__scale="property: scale; to: 1.2 1.2 1.2; dur: 200; startEvents: mouseenter"
+          animation__scale_reverse="property: scale; to: 1 1 1; dur: 200; startEvents: mouseleave"
+          ></a-mixin>
+         <a-mixin
+          id="movieImage"
+          geometry="primitive: plane; width: 1.5; height: 0.81"
+          material="src: #ponyo; shader: flat; transparent: true"
+          position="0 0.495 0.002"
+         ></a-mixin>
+      </a-assets>
+      <!-- <a-sky src="" rotation="0 -130 0"></a-sky> -->
+
+      <a-entity
+        id="background"
+        position="0 0 0"
+        geometry="primitive: sphere; radius: 2.0"
+        material="color: red; side: back; shader: flat"
+        scale="0.001 0.001 0.001"
+        visible="false" class="raycastable">
+      </a-entity>
+
+      <a-entity
+        position="0 1.6 0"
+        camera look-controls="magicWindowTrackingEnabled: true; touchEnabled: true; mouseEnabled: true">
+        <a-entity
+          id="fadeBackground"
+          geometry="primitive: sphere; radius: 2.5"
+          material="color: black; side: back; shader: flat; transparent: true; opacity: 0.6" visible="false"
+        >
+        </a-entity>
+      </a-entity>
+
+      <!-- <a-videosphere src="#PokemonCenter" rotation="0 -80 0"></a-videosphere> -->
+
+      <!-- Hand controls -->
+      <!-- <a-entity id="leftHand" laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
+      <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity> -->
+      <!-- <a-plane src="#modalImg" position="10 0.4 0" width="2" height="2" rotation="-90 30 0"></a-plane> -->
+
+        <!-- Poster menu -->
+        <!-- <a-entity position="0 1.6 -2.5" id="modal">
+        </a-entity> -->
     </a-scene>
   </body>
 </html>
