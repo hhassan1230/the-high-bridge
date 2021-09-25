@@ -2,7 +2,7 @@ const house = {
     "rooms": {
       "Entry": {
         "background": {
-          "source": "https://i.ibb.co/Qdm3FHq/Ambush-Alley-BKG-5.jpg",
+          "source": "Assets/PalletTown.mp4",
           "loop": null,
           "type": "Picture"
         },
@@ -78,7 +78,7 @@ const house = {
       },
       "Ally": {
         "background": {
-          "source": "Assets/PalletTown.mp4",
+          "source": "https://i.ibb.co/Qdm3FHq/Ambush-Alley-BKG-5.jpg",
           "loop": false,
           "type": "Video"
         },

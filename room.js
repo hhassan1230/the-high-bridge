@@ -69,6 +69,12 @@ AFRAME.registerComponent('room', {
     }
   },
 
+  filterAssets: function(currentFilter){
+    document.querySelectorAll('.room-attribute').forEach(e => e.remove());
+    // TODO: Adds setInteraction with filtered interaction array
+
+  },
+
   setInteractions: function(interactions){
     // console.log(interactions);
     interactions.forEach(interaction => {
