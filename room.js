@@ -2,12 +2,13 @@
 /* global AFRAME */
 AFRAME.registerComponent('room', {
   init: function () {
-    var buttonEls = this.buttonEls = this.el.querySelectorAll('.nav-button');
+    // var buttonEls = this.buttonEls = this.el.querySelectorAll('.nav-button');
     this.onClick = this.onClick.bind(this);
     this.setEnvironment = this.setEnvironment.bind(this);
     this.setBackground = this.setBackground.bind(this);
     this.setInteractions = this.setInteractions.bind(this);
     this.reset = this.reset.bind(this);
+    this.tick = this.tick.bind(this);
 
     this.data.room = "Entry";
 
@@ -28,6 +29,9 @@ AFRAME.registerComponent('room', {
       const { source, text } = interaction.display;
       console.log("open interaction");
       const modal = document.createElement("a-entity");
+
+      this.tick();
+      
       modal.setAttribute('id', 'modal');
       modal.setAttribute('position', "0 1.6 -2.5");
       modal.innerHTML = `
@@ -81,6 +85,8 @@ AFRAME.registerComponent('room', {
       // if(interaction.type.toLowerCase() === "nav"){
         const entity = document.createElement("a-entity");
         entity.setAttribute('position', `${interaction.location.x} ${interaction.location.y} ${interaction.location.z}`);
+        entity.setAttribute('class', `interactions`);
+
         if(interaction.id === 1789){
           // console.log("seeting rotation")
           entity.setAttribute('rotation', `${interaction.rotation.x} ${interaction.rotation.y} ${interaction.rotation.z}`);
@@ -108,9 +114,24 @@ AFRAME.registerComponent('room', {
     if(document.querySelector("a-videosphere")){
       document.querySelector("a-videosphere").remove();
     } 
+    if(document.querySelector(".interactions")){
+      document.querySelectorAll(".interactions").forEach(el => el.remove());
+    } 
     if(document.getElementById("modal")){
       document.getElementById("modal").remove();
     } 
     document.querySelectorAll('.room-attribute').forEach(e => e.remove());
   },
+  tick: function () {
+    this.el.object3D.position.set(0, 2, 3);
+
+    // // `this.el` is the element.
+    // // `object3D` is the three.js object.
+
+    // // `rotation` is a three.js Euler using radians. `quaternion` also available.
+    // console.log(this.el.object3D.rotation);
+
+    // // `position` is a three.js Vector3.
+    // console.log(this.el.object3D.position);
+  }
 });

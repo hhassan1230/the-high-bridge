@@ -2,9 +2,9 @@ const house = {
     "rooms": {
       "Entry": {
         "background": {
-          "source": "Assets/PalletTown.mp4",
-          "loop": null,
-          "type": "Picture"
+          "source": "/Assets/PokemonCenterAnimated.mp4",
+          "loop": true,
+          "type": "video"
         },
         "adjacentRooms": ["MainHall"],
         "interactions": [
@@ -80,7 +80,7 @@ const house = {
         "background": {
           "source": "https://i.ibb.co/Qdm3FHq/Ambush-Alley-BKG-5.jpg",
           "loop": false,
-          "type": "Video"
+          "type": "picture"
         },
         "adjacentRooms": ["MainHall"],
         "interactions": [

@@ -8,8 +8,6 @@
     <!-- <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script> -->
     <!-- <script src="../../js/info-message.js"></script> -->
     <script src="./data/config.js"></script>
-    <script src="highlight.js"></script>
-    <script src="info-panel.js"></script>
     <script src="room.js"></script>     
   </head>
   <body>
@@ -21,7 +19,6 @@
       cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable"
       info-message="htmlSrc: #messageText">
       <a-assets>
-        <!-- <img id="ponyo" src="https://cdn.aframe.io/examples/ui/ponyo.jpg" crossorigin="anonymous"/> -->
         <img id="nav" src="https://i.ibb.co/MBtLk6z/ARROW.png" crossorigin="anonymous"/>
         <img id="bow" src="https://i.ibb.co/92RYRcW/BOW.png" crossorigin="anonymous"/>
 
@@ -66,6 +63,7 @@
          ></a-mixin>
       </a-assets>
       <!-- <a-sky src="" rotation="0 -130 0"></a-sky> -->
+      <!-- <a-videosphere src="#PokemonCenter" rotation="0 -80 0"></a-videosphere> -->
 
       <a-entity
         id="background"
@@ -87,16 +85,6 @@
         </a-entity>
       </a-entity>
 
-      <!-- <a-videosphere src="#PokemonCenter" rotation="0 -80 0"></a-videosphere> -->
-
-      <!-- Hand controls -->
-      <!-- <a-entity id="leftHand" laser-controls="hand: left" raycaster="objects: .raycastable"></a-entity>
-      <a-entity id="rightHand" laser-controls="hand: right" raycaster="objects: .raycastable" line="color: #118A7E"></a-entity> -->
-      <!-- <a-plane src="#modalImg" position="10 0.4 0" width="2" height="2" rotation="-90 30 0"></a-plane> -->
-
-        <!-- Poster menu -->
-        <!-- <a-entity position="0 1.6 -2.5" id="modal">
-        </a-entity> -->
     </a-scene>
   </body>
 </html>
