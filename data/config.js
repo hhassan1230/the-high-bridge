@@ -2,9 +2,9 @@ const house = {
     "rooms": {
       "Entry": {
         "background": {
-          "source": "/Assets/PokemonCenterAnimated.mp4",
-          "loop": true,
-          "type": "video"
+          "source": "https://i.ibb.co/Qdm3FHq/Ambush-Alley-BKG-5.jpg",
+          "loop": false,
+          "type": "picture"
         },
         "adjacentRooms": ["MainHall"],
         "interactions": [
@@ -78,9 +78,9 @@ const house = {
       },
       "Ally": {
         "background": {
-          "source": "https://i.ibb.co/Qdm3FHq/Ambush-Alley-BKG-5.jpg",
-          "loop": false,
-          "type": "picture"
+          "source": "/Assets/PokemonCenterAnimated.mp4",
+          "loop": true,
+          "type": "video"
         },
         "adjacentRooms": ["MainHall"],
         "interactions": [
@@ -154,6 +154,16 @@ const house = {
       },
     },
     "settings": {
+      "customizables": [
+        {
+          "type": "addButton",
+          "action": "openAddIcons",
+          "location": {"x": -0.7, "y": 2.5, "z": 1.5},
+          "rotation": {"x":0, "y": -30, "z": -10},
+          "width": "0.4",
+          "height": "0.7",
+        }
+      ],
       "audio": {
         "audioAnchor": "bottom",
         "soundOnEnter": true,

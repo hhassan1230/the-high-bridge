@@ -9,6 +9,7 @@ AFRAME.registerComponent('room', {
     this.setInteractions = this.setInteractions.bind(this);
     this.reset = this.reset.bind(this);
     this.tick = this.tick.bind(this);
+    this.setCustomizables = this.setCustomizables.bind(this);
 
     this.data.room = "Entry";
 
@@ -28,10 +29,7 @@ AFRAME.registerComponent('room', {
       } 
       const { source, text } = interaction.display;
       console.log("open interaction");
-      const modal = document.createElement("a-entity");
-
-      this.tick();
-      
+      const modal = document.createElement("a-entity");   
       modal.setAttribute('id', 'modal');
       modal.setAttribute('position', "0 1.6 -2.5");
       modal.innerHTML = `
@@ -39,6 +37,19 @@ AFRAME.registerComponent('room', {
           <a-image position="0 0.4 0" src="${source}" width="3" height="3"></a-image>
           <a-entity mixin="text" text="value: ${text}; color: black; width: 2.3;"></a-entity>
       </a-entity>
+      `;
+      let parent = document.getElementById("parent");
+      parent.appendChild(modal);
+    } else if(interaction.type === "addButton"){
+      console.log("clickinggg", interaction)
+      // const { source, text } = interaction.display;
+      console.log("open interaction");
+      const modal = document.createElement("a-entity");   
+      modal.setAttribute('id', 'modal');
+      modal.setAttribute('position', "-15 1.6 15");
+      modal.setAttribute('rotation', "100 0 10");
+      modal.innerHTML = `
+        <a-entity mixin="btnModal" color: black; width: 2.3;"></a-entity>
       `;
       let parent = document.getElementById("parent");
       parent.appendChild(modal);
@@ -51,6 +62,7 @@ AFRAME.registerComponent('room', {
     // console.log("Setting env for: ", this.data.room);
     this.setBackground(rooms[`${this.data.room}`].background);
     this.setInteractions(rooms[`${this.data.room}`].interactions);
+    this.setCustomizables();
   },
 
   setBackground: function(background){
@@ -73,12 +85,6 @@ AFRAME.registerComponent('room', {
     }
   },
 
-  filterAssets: function(currentFilter){
-    document.querySelectorAll('.room-attribute').forEach(e => e.remove());
-    // TODO: Adds setInteraction with filtered interaction array
-
-  },
-
   setInteractions: function(interactions){
     // console.log(interactions);
     interactions.forEach(interaction => {
@@ -92,16 +98,43 @@ AFRAME.registerComponent('room', {
           entity.setAttribute('rotation', `${interaction.rotation.x} ${interaction.rotation.y} ${interaction.rotation.z}`);
         }
         entity.innerHTML = `
-        <a-entity class="room-attribute">
-          <a-entity class="raycastable nav-button" mixin="navs">
+          <a-entity class="raycastable" mixin="interactions">
             <a-image src="${interaction.type.toLowerCase() === "nav" ? '#nav' : '#bow'}" width="${interaction.width}" height="${interaction.height}"></a-image>
           </a-entity>
-        </a-entity>
         `;
         let parent = document.getElementById("parent");
         parent.appendChild(entity);
         entity.addEventListener('click', ()=> {
           this.onClick(interaction)
+        });
+    });
+  },
+
+  setCustomizables: function(){
+    const { settings : {customizables} } = house;
+
+    // console.log(interactions);
+    customizables.forEach(customize => {
+      // if(interaction.type.toLowerCase() === "nav"){
+        const entity = document.createElement("a-entity");
+        entity.setAttribute('position', `${customize.location.x} ${customize.location.y} ${customize.location.z}`);
+        // entity.setAttribute('position', `0 1 1`);
+
+        entity.setAttribute('class', `customizes`);
+
+        // if(customize.id === 1789){
+          // console.log("seeting rotation")
+        entity.setAttribute('rotation', `${customize.rotation.x} ${customize.rotation.y} ${customize.rotation.z}`);
+        // }
+        entity.innerHTML = `
+          <a-entity class="raycastable" mixin="customizables">
+            <a-image src="#addIcon" width="${customize.width}" height="${customize.height}"></a-image>
+          </a-entity>
+        `;
+        let parent = document.getElementById("parent");
+        parent.appendChild(entity);
+        entity.addEventListener('click', ()=> {
+          this.onClick(customize)
         });
     });
   },
