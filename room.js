@@ -43,16 +43,50 @@ AFRAME.registerComponent('room', {
     } else if(interaction.type === "addButton"){
       console.log("clickinggg", interaction)
       // const { source, text } = interaction.display;
-      console.log("open interaction");
+      // console.log("open interaction");
+      if(document.querySelector(".customizes")){
+        document.querySelectorAll(".customizes").forEach(el => el.remove());
+      } 
       const modal = document.createElement("a-entity");   
       modal.setAttribute('id', 'modal');
-      modal.setAttribute('position', "-15 1.6 15");
-      modal.setAttribute('rotation', "100 0 10");
+      modal.setAttribute('position', "-1 2.5 2");
+      modal.setAttribute('rotation', "0 145 0");
       modal.innerHTML = `
-        <a-entity mixin="btnModal" color: black; width: 2.3;"></a-entity>
+          <a-entity mixin="close-modal" position="0 0.4 0">
+            <a-image class="raycastable" mixin="close-button" id="close" src="#close-btn" position="1.3 0 0" width="0.3" height="0.3"></a-image>
+          </a-entity>
+          <a-entity mixin="btnModal" position="0 -1 0" >
+            <a-entity 
+              text="value: Add Your Own Interaction:; color: black; width: 4; align: center; font: aileronsemibold;" 
+              position="0 1.1 0">
+            </a-entity> 
+            <a-entity>
+              <a-image position="-1 0.5 0" src="#nav" width="0.4" height="0.7"> </a-entity>
+              <a-entity 
+                text="value: Navigation; color: black; width: 2; align: center; font: aileronsemibold;" 
+                position="-1 0.1 0">
+              </a-entity>
+            </a-entity>
+            <a-entity>
+              <a-image position="-0.3 -0.5 0" src="#bow" width="0.4" height="0.7"> </a-entity>
+              <a-entity 
+                text="value: Modal; color: black; width: 2; align: center; font: aileronsemibold;" 
+                position="-0.3 -0.9 0">
+              </a-entity>
+            </a-entity>
+          </a-entity>
       `;
+      // console.log("modalll:", modal)
       let parent = document.getElementById("parent");
       parent.appendChild(modal);
+
+      const close = document.getElementById("close");
+      close.addEventListener('click', ()=> {
+        if(document.getElementById("modal")){
+          document.getElementById("modal").remove();
+        }  
+        this.setCustomizables()     
+      });
     }
   },
 

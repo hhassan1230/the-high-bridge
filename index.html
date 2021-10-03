@@ -23,6 +23,7 @@
         <img id="addIcon" src="/Assets/add.png" crossorigin="anonymous" />
 
         <img id="modalImg" src="https://i.ibb.co/z6hR1Ys/OUTSIDE-CASTLE-ROOM-POPUP.jpg" crossorigin="anonymous" />
+        <img id="close-btn" src="https://i.ibb.co/p3HtGWy/Navi-Icon-24.png" crossorigin="anonymous" />
 
         <!-- <video id="PokemonCenter" src="Assets/PalletTown.mp4" loop="true"></video> -->
 
@@ -42,9 +43,26 @@
           position="0 -1.55 0"
           ></a-mixin>
           <a-mixin
-          id="btnModal"
+          id="header-text"
           geometry="primitive: plane; width: 3; height: 0.9"
-          material="color: #edd4b4; shader: flat"
+          material="shader: flat"
+          ></a-mixin>
+          <a-mixin
+          id="btnModal"
+          geometry="primitive: plane; width: 3; height: 2.5"
+          material="color: yellow; shader: flat"
+          ></a-mixin>
+          <a-mixin
+          id="close-modal"
+          geometry="primitive: plane; width: 3; height: 0.3"
+          material="color: red; shader: flat"
+          ></a-mixin>
+          <a-mixin
+          id="close-button"
+          geometry="primitive: plane;"
+          material="opacity: 1"
+          animation__scale="property: scale; to: 1.2 1.2 1.2; dur: 200; startEvents: mouseenter"
+          animation__scale_reverse="property: scale; to: 1 1 1; dur: 200; startEvents: mouseleave"
           ></a-mixin>
          <a-mixin
           id="poster"
