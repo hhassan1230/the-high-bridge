@@ -3,15 +3,15 @@ const house = {
       "Entry": {
         "background": {
           "source": "Assets/PalletTown.mp4",
-          "loop": null,
-          "type": "Picture"
+          "loop": true,
+          "type": "video"
         },
-        "adjacentRooms": ["MainHall"],
+        "adjacentRooms": ["MainHall", "PokeCenter"],
         "interactions": [
             {
-                "whereTo": "Ally",
+                "whereTo": "PokeCenter",
                 "type": "Nav",
-                "location": {"x": 2.1, "y": 1.4, "z": -2.5},
+                "location": {"x": -6.5, "y": 1.3, "z": 3},
                 "distance": 1,
                 "width": "0.4",
                 "height": "0.7",
@@ -19,10 +19,9 @@ const house = {
                 "id": 1
             },
             {
-              "whereTo": "Ally",
+              "whereTo": "PokeCenter",
               "type": "Nav",
-              "location": {"x": -6.5, "y": 1.3, "z": 3},
-              "rotation": {"x":0, "y": 90, "z": 0},
+              "location": {"x": 2.1, "y": 1.4, "z": -2.5},
               "width": "0.7",
               "height": "1",
               "distance": 1,
@@ -76,13 +75,13 @@ const house = {
               }
         ]
       },
-      "Ally": {
+      "PokeCenter": {
         "background": {
-          "source": "https://i.ibb.co/Qdm3FHq/Ambush-Alley-BKG-5.jpg",
-          "loop": false,
-          "type": "Video"
+          "source": "Assets/PokemonCenterAnimated.mp4",
+          "loop": true,
+          "type": "video"
         },
-        "adjacentRooms": ["MainHall"],
+        "adjacentRooms": ["Entry"],
         "interactions": [
             {
                 "whereTo": "Entry",
