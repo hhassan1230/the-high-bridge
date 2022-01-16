@@ -64,8 +64,17 @@ AFRAME.registerComponent('room', {
       videoBackground.setAttribute('rotation', "0 -80 0");
       videoBackground.setAttribute('loop', `${background.loop ? background.loop : 'false'}`);
       let parent = document.getElementById("parent");
+      var copyVideo;    // if true we can call gl.texImage2D
       parent.appendChild(videoBackground);
-      videoBackground.play();
+      videoBackground.addEventListener("playing", function() {
+        copyVideo = true;
+      }, true);
+      videoBackground.addEventListener("ended", function() {
+        videoBackground.currentTime = 0;
+        //videoBackground.play();
+      }, true);
+      
+      //videoBackground.play();
     }
   },
 
