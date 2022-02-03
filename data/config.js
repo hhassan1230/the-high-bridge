@@ -1,3 +1,5 @@
+
+
 const house = {
     "rooms": {
       "Entry": {
@@ -11,7 +13,7 @@ const house = {
           {
             "whereTo": "Cave",
             "type": "Nav",
-            "location": {"x": -0.5, "y": 1.4, "z": 2.5},
+            "location": {"x": 0.5, "y": 1.4, "z": 2.5},
             "rotation": {"x":0, "y": 180, "z": 0},
             "width": "0.7",
             "height": "1",
@@ -58,23 +60,27 @@ const house = {
             {
                 "whereTo": "Entry",
                 "type": "Nav",
-                "location": {"x": 2.1, "y": 1.4, "z": -2.5},
+                "location": {"x": 5.3, "y": 0.5, "z": -5},
+                "rotation": {"x":0, "y": 45, "z": 0},
                 "distance": 1,
                 "width": "0.4",
                 "height": "0.7",
                 "originalRoom": "Ally",
                 "id": 132423
+                // nav leading outside
             },
             {
               "whereTo": "Entry",
               "type": "Nav",
-              "location": {"x": -6.5, "y": 1.3, "z": 3},
-              "rotation": {"x":0, "y": 90, "z": 0},
+              "location": {"x": -6.2, "y": 1.3, "z": 6.7},
+              "rotation": {"x":0, "y": 180, "z": 0},
               "width": "0.7",
               "height": "1",
               "distance": 1,
               "originalRoom": "Ally",
               "id": 235235
+              // nav on pokemachine
+              // still not clickable
             },
             {
                 "whereTo": "Ally",
@@ -134,12 +140,12 @@ const house = {
           {
             "whereTo": "Entry",
             "type": "Nav",
-            "location": {"x": 5.5, "y": 1.3, "z": 3},
-            "rotation": {"x":0, "y": 0, "z": 0},
+            "location": {"x": 40, "y": 0.7, "z": 1},
+            "rotation": {"x":1, "y": 0, "z": 1},
             "width": "0.7",
             "height": "1",
             "distance": 1,
-            "originalRoom": "Ally",
+            "originalRoom": "Cave",
             "id": 235235
           }
         ]
@@ -158,3 +164,9 @@ const house = {
       }
     }
   }
+
+  // modals don't go away.
+  // not every nav leads somewhere.
+  // can't see the first area.
+  // nav placement could be better.
+  // broken pipe error? 
