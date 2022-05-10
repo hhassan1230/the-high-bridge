@@ -14,6 +14,9 @@ AFRAME.registerComponent('room', {
     this.setEnvironment();
   },
 
+
+  
+  
   onClick: function (interaction) {
     // console.log(interaction)
     if(interaction.type.toLowerCase() === 'nav'){
@@ -122,4 +125,20 @@ AFRAME.registerComponent('room', {
     } 
     document.querySelectorAll('.room-attribute').forEach(e => e.remove());
   },
-});
+})
+
+//    function(event) {
+//     // If user either clicks X button OR clicks outside the modal window, then close modal by calling closeModal()
+//     if (
+//       event.target.matches(".button-close-modal") ||
+//       !event.target.closest(".modal")
+//     ) {
+//       closeModal()
+//     }
+//   },
+//   false
+
+
+// function closeModal() {
+//   document.querySelector(".modal").style.display = "none"
+// }

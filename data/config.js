@@ -72,8 +72,8 @@ const house = {
             {
               "whereTo": "Entry",
               "type": "Nav",
-              "location": {"x": -6.2, "y": 1.3, "z": 6.7},
-              "rotation": {"x":0, "y": 180, "z": 0},
+              "location": {"x": -6.2, "y": 40.5, "z": 5.3},
+              
               "width": "0.7",
               "height": "1",
               "distance": 1,
@@ -145,7 +145,7 @@ const house = {
             "width": "0.7",
             "height": "1",
             "distance": 1,
-            "originalRoom": "Cave",
+            "originalRoom": "Entry",
             "id": 235235
           }
         ]
