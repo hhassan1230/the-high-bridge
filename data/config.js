@@ -49,9 +49,9 @@ const house = {
       },
       "Ally": {
         "background": {
-          "source": "Assets/pokemon-center-animated_Mini.mp4",
-          "loop": true,
-          "type": "video"
+          "source": "Assets/ovenland1.jpeg",
+          "loop": false,
+          "type": "picture"
         },
         "adjacentRooms": ["Entry"],
         "interactions": [

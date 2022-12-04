@@ -18,8 +18,9 @@ AFRAME.registerComponent('room', {
     console.log(interaction)
     if(interaction.type.toLowerCase() === 'nav'){
       console.log("change background to: ", interaction);
-      this.data.room = interaction.whereTo;
+      const { rooms } = house;
       this.reset();
+      this.data.room = interaction.whereTo;
       this.setEnvironment();
     } else if(interaction.type.toLowerCase() === 'print' || interaction.type.toLowerCase() === 'picture'){
       if(document.getElementById("modal")){
@@ -54,7 +55,8 @@ AFRAME.registerComponent('room', {
       console.log("setting img background")
       const imgBackground = document.createElement("a-sky");
       imgBackground.setAttribute('src', background.source);
-      imgBackground.setAttribute('rotation', "0 -130 0");
+      imgBackground.setAttribute('shader', "flat");
+      imgBackground.setAttribute('rotation', "0 0 0");
       let parent = document.getElementById("parent");
       parent.appendChild(imgBackground);
     } 
@@ -63,10 +65,13 @@ AFRAME.registerComponent('room', {
       
       videoBackground.setAttribute('src', background.source);
       
-      // const videosphere = document.querySelector("a-videosphere");
-      // videosphere.setAttribute('rotation',"0 -90 0");
-      // videosphere.setAttribute('src', "#videoBackground");
 
+      const videosphere = document.createElement("a-videosphere");
+      videosphere.setAttribute('rotation',"0 -90 0");
+      videosphere.setAttribute('src', "#videoBackground");
+      
+      let parent = document.getElementById("parent");
+      parent.appendChild(videosphere);
       videoBackground.play();
 
     }
@@ -107,10 +112,10 @@ AFRAME.registerComponent('room', {
     if(document.querySelector("a-sky")){
       console.log("remove img background");
       document.querySelector("a-sky").remove();
+    }
+    if(document.querySelector("a-videosphere")){
+      document.querySelector("a-videosphere").remove();
     } 
-    // if(document.querySelector("a-videosphere")){
-    //   document.querySelector("a-videosphere").remove();
-    // } 
     if(document.getElementById("modal")){
       document.getElementById("modal").remove();
     } 
