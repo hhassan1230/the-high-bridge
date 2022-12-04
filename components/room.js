@@ -15,12 +15,12 @@ AFRAME.registerComponent('room', {
   },
 
   onClick: function (interaction) {
-    // console.log(interaction)
+    console.log(interaction)
     if(interaction.type.toLowerCase() === 'nav'){
       console.log("change background to: ", interaction);
       this.data.room = interaction.whereTo;
       this.reset();
-      this.setEnvironment()
+      this.setEnvironment();
     } else if(interaction.type.toLowerCase() === 'print' || interaction.type.toLowerCase() === 'picture'){
       if(document.getElementById("modal")){
         document.getElementById("modal").remove();
@@ -59,22 +59,16 @@ AFRAME.registerComponent('room', {
       parent.appendChild(imgBackground);
     } 
     if(background.type.toLowerCase() === 'video'){
-      const videoBackground = document.createElement("a-videosphere");
-      videoBackground.setAttribute('src', background.source);
-      videoBackground.setAttribute('rotation', "0 -80 0");
-      videoBackground.setAttribute('loop', `${background.loop ? background.loop : 'false'}`);
-      let parent = document.getElementById("parent");
-      var copyVideo;    // if true we can call gl.texImage2D
-      parent.appendChild(videoBackground);
-      videoBackground.addEventListener("playing", function() {
-        copyVideo = true;
-      }, true);
-      videoBackground.addEventListener("ended", function() {
-        videoBackground.currentTime = 0;
-        //videoBackground.play();
-      }, true);
+      const videoBackground = document.getElementById("videoBackground");
       
-      //videoBackground.play();
+      videoBackground.setAttribute('src', background.source);
+      
+      // const videosphere = document.querySelector("a-videosphere");
+      // videosphere.setAttribute('rotation',"0 -90 0");
+      // videosphere.setAttribute('src', "#videoBackground");
+
+      videoBackground.play();
+
     }
   },
 
@@ -114,9 +108,9 @@ AFRAME.registerComponent('room', {
       console.log("remove img background");
       document.querySelector("a-sky").remove();
     } 
-    if(document.querySelector("a-videosphere")){
-      document.querySelector("a-videosphere").remove();
-    } 
+    // if(document.querySelector("a-videosphere")){
+    //   document.querySelector("a-videosphere").remove();
+    // } 
     if(document.getElementById("modal")){
       document.getElementById("modal").remove();
     } 
