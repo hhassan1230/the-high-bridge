@@ -4,61 +4,65 @@ const house = {
         "background": {
           "source": "Assets/pallet-town_Mini.mp4",
           "loop": true,
-          "type": "video"
+          "type": "video",
+          "rotation": [0, -90, 0], //[x, y, z],
         },
         "adjacentRooms": ["MainHall", "Cave"],
         "interactions": [
           {
             "whereTo": "Cave",
             "type": "Nav",
-            "location": {"x": -0.5, "y": 1.4, "z": 2.5},
-            "rotation": {"x":0, "y": 180, "z": 0},
+            "location": [-0.5, 1.4, -3], //[x, y, z],
+            "rotation": [0, 0, 0], //[x, y, z],
             "width": "0.7",
             "height": "1",
             "distance": 1,
             "originalRoom": "Entry",
             "id": 1789
           },
-            {
-              "whereTo": "Ally",
-              "type": "Nav",
-              "location": {"x": -0.5, "y": 1.4, "z": -2.5},
-              "rotation": {"x":0, "y": 0, "z": 0},
-              "width": "0.7",
-              "height": "1",
-              "distance": 1,
-              "originalRoom": "Entry",
-              "id": 1790
-            },
-            {
-                "whereTo": "Entry",
-                "type": "Picture",
-                "location": {"x": -5.5, "y": 1, "z": -4},
-                "distance": 1,
-                "originalRoom": "Entry",
-                "id": 2,
-                "width": "0.4",
-                "height": "0.7",
-                "display" : {
-                  "type": "Image",
-                  "source": "https://i.ibb.co/z6hR1Ys/OUTSIDE-CASTLE-ROOM-POPUP.jpg",
-                  "text": "Lilly got a hostile welcome the first time she fell down her oven into the Ovenland world. Today she is much more welcome. The old fountain is now being used as a skating rink!"
-                }
+          {
+            "whereTo": "Ally",
+            "type": "Nav",
+            "location": [-2, 1.4, 3], //[x, y, z],
+            "rotation": [0, 0, 0], //[x, y, z],
+            "width": "0.9",
+            "height": "1",
+            "distance": 1,
+            "originalRoom": "Entry",
+            "id": 1790
+          },
+          {
+            "whereTo": "Entry",
+            "type": "Picture",
+            "location": [4, 4, -3], //[x, y, z],
+            "rotation": [0, 0, 7], //[x, y, z],
+            "distance": 1,
+            "originalRoom": "Entry",
+            "id": 2,
+            "width": "0.4",
+            "height": "0.7",
+            "display" : {
+              "type": "Image",
+              "source": "https://i.ibb.co/z6hR1Ys/OUTSIDE-CASTLE-ROOM-POPUP.jpg",
+              "text": "Lilly got a hostile welcome the first time she fell down her oven into the Ovenland world. Today she is much more welcome. The old fountain is now being used as a skating rink!"
             }
+          }
         ]
       },
       "Ally": {
         "background": {
           "source": "Assets/ovenland1.jpeg",
           "loop": false,
-          "type": "picture"
+          "type": "picture",
+          "rotation": [0, -90, 0], //[x, y, z],
         },
         "adjacentRooms": ["Entry"],
         "interactions": [
             {
                 "whereTo": "Entry",
                 "type": "Nav",
-                "location": {"x": 2.1, "y": 1.4, "z": -2.5},
+                "location": [2.1, 1.4, -3], //[x, y, z],
+                "rotation": [0, 0, 0], //[x, y, z],
                 "distance": 1,
                 "width": "0.4",
                 "height": "0.7",
@@ -68,8 +72,8 @@ const house = {
             {
               "whereTo": "Entry",
               "type": "Nav",
-              "location": {"x": -6.5, "y": 1.3, "z": 3},
-              "rotation": {"x":0, "y": 90, "z": 0},
+              "location": [-6.5, 1.3, -3], //[x, y, z],
+              "rotation": [0, 90, 0], //[x, y, z],
               "width": "0.7",
               "height": "1",
               "distance": 1,
@@ -79,7 +83,8 @@ const house = {
             {
                 "whereTo": "Ally",
                 "type": "Picture",
-                "location": {"x": -5.5, "y": 1, "z": -4},
+                "location": [-5.5, 1, -4], //[x, y, z],
+                "rotation": [0, 0, 0], //[x, y, z],
                 "distance": 1,
                 "originalRoom": "Ally",
                 "id": 235235235,
@@ -94,7 +99,8 @@ const house = {
             {
                 "whereTo": "Ally",
                 "type": "Picture",
-                "location": {"x": -5.5, "y": 0, "z": -4},
+                "location": [-5.5, 0, -4], //[x, y, z],
+                "rotation": [0, 0, 0], //[x, y, z],
                 "distance": 1,
                 "originalRoom": "Ally",
                 "id": 3,
@@ -109,7 +115,8 @@ const house = {
               {
                 "whereTo": "Ally",
                 "type": "Print",
-                "location": {"x": 0, "y": 1.4, "z": -4},
+                "location": [0, 1.4, -4], //[x, y, z],
+                "rotation": [0, 0, 0], //[x, y, z],
                 "distance": 1,
                 "originalRoom": "Ally",
                 "id": 2532330,
@@ -127,14 +134,16 @@ const house = {
         "background": {
           "source": "Assets/pokemon-cave_Mini.mp4",
           "loop": true,
-          "type": "video"
+          "type": "video",
+          "rotation": [0, -90, 0], //[x, y, z],
         },
         "adjacentRooms": ["Entry"],
         "interactions": [
           {
               "whereTo": "Entry",
               "type": "Nav",
-              "location": {"x": 2.1, "y": 1.4, "z": -2.5},
+              "location": [2.1, 1.4, -2.5], //[x, y, z],
+              "rotation": [0, 0, 0], //[x, y, z],
               "distance": 1,
               "width": "0.4",
               "height": "0.7",
@@ -144,7 +153,8 @@ const house = {
           {
               "whereTo": "Ally",
               "type": "Picture",
-              "location": {"x": -5.5, "y": 1, "z": -4},
+              "location": [-5.5, 1, -4], //[x, y, z],
+              "rotation": [0, 0, 0], //[x, y, z],
               "distance": 1,
               "originalRoom": "Ally",
               "id": 235235235,
@@ -159,7 +169,8 @@ const house = {
           {
               "whereTo": "Ally",
               "type": "Picture",
-              "location": {"x": -5.5, "y": 0, "z": -4},
+              "location": [-5.5, 0, -4], //[x, y, z],
+              "rotation": [0, 0, 0], //[x, y, z],
               "distance": 1,
               "originalRoom": "Ally",
               "id": 3,
@@ -174,7 +185,8 @@ const house = {
             {
               "whereTo": "Ally",
               "type": "Print",
-              "location": {"x": 0, "y": 1.4, "z": -4},
+              "location": [0, 1.4, -4], //[x, y, z],
+              "rotation": [0, 0, 0], //[x, y, z],
               "distance": 1,
               "originalRoom": "Ally",
               "id": 2532330,

@@ -14,8 +14,19 @@ AFRAME.registerComponent('room', {
     this.setEnvironment();
   },
 
+  // tick: function () {
+  //   // `this.el` is the element.
+  //   // `object3D` is the three.js object.
+
+  //   // `rotation` is a three.js Euler using radians. `quaternion` also available.
+  //   // console.log(this.el.object3D.rotation);
+
+  //   // `position` is a three.js Vector3.
+  //   console.log(this.el.object3D.position);
+  // },
+
   onClick: function (interaction) {
-    console.log(interaction)
+    // console.log(interaction)
     if(interaction.type.toLowerCase() === 'nav'){
       console.log("change background to: ", interaction);
       const { rooms } = house;
@@ -23,14 +34,27 @@ AFRAME.registerComponent('room', {
       this.data.room = interaction.whereTo;
       this.setEnvironment();
     } else if(interaction.type.toLowerCase() === 'print' || interaction.type.toLowerCase() === 'picture'){
+      var cameraEl = this.el.sceneEl.camera.el;
+      var rotation = cameraEl.getAttribute('rotation');
+      var worldPos = new THREE.Vector3();
+      // console.log(worldPos)
+      // worldPos.setFromMatrixPosition(cameraEl.object3D.matrixWorld);
+      // console.log("Time: " + this.data.seconds 
+      // + "; Camera Position: (" + worldPos.x.toFixed(2) + ", " + worldPos.y.toFixed(2) + ", " + worldPos.z.toFixed(2) 
+      // + "); Camera Rotation: (" + rotation.x.toFixed(2) + ", " + rotation.y.toFixed(2) + ", " + rotation.z.toFixed(2) + ")");        
       if(document.getElementById("modal")){
         document.getElementById("modal").remove();
+        return;
       } 
       const { source, text } = interaction.display;
-      console.log("open interaction");
+      // console.log("open interaction");
       const modal = document.createElement("a-entity");
       modal.setAttribute('id', 'modal');
-      modal.setAttribute('position', "0 1.6 -2.5");
+      modal.setAttribute('position', {x: 0, y: 1.6, z: -2.5});
+      // newSphere.setAttribute('position', cameraEl.object3D.position.x+offSet*i + ' 0 -2.5');
+
+      // modal.setAttribute('rotation', `${rotation.x.toFixed(2)} ${rotation.y.toFixed(2)} ${rotation.z.toFixed(2)}`);
+
       modal.innerHTML = `
       <a-entity>
           <a-image position="0 0.4 0" src="${source}" width="3" height="3"></a-image>
@@ -67,7 +91,7 @@ AFRAME.registerComponent('room', {
       
 
       const videosphere = document.createElement("a-videosphere");
-      videosphere.setAttribute('rotation',"0 -90 0");
+      videosphere.setAttribute('rotation', background.rotation.join(" "));
       videosphere.setAttribute('src', "#videoBackground");
       
       let parent = document.getElementById("parent");
@@ -88,11 +112,11 @@ AFRAME.registerComponent('room', {
     interactions.forEach(interaction => {
       // if(interaction.type.toLowerCase() === "nav"){
         const entity = document.createElement("a-entity");
-        entity.setAttribute('position', `${interaction.location.x} ${interaction.location.y} ${interaction.location.z}`);
-        if(interaction.id === 1789){
+        entity.setAttribute('position', interaction.location.join(" "));
+        // if(interaction.id === 1789){
           // console.log("seeting rotation")
-          entity.setAttribute('rotation', `${interaction.rotation.x} ${interaction.rotation.y} ${interaction.rotation.z}`);
-        }
+          entity.setAttribute('rotation', interaction.rotation.join(" "));
+        // }
         entity.innerHTML = `
         <a-entity class="room-attribute">
           <a-entity class="raycastable nav-button" mixin="navs">
