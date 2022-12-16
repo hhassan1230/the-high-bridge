@@ -36,7 +36,9 @@ AFRAME.registerComponent('room', {
     } else if(interaction.type.toLowerCase() === 'print' || interaction.type.toLowerCase() === 'picture'){
       var cameraEl = this.el.sceneEl.camera.el;
       var rotation = cameraEl.getAttribute('rotation');
-      var worldPos = new THREE.Vector3();
+      var position = cameraEl.getAttribute('position');
+      // console.log(position, rotation)
+      // var worldPos = new THREE.Vector3();
       // console.log(worldPos)
       // worldPos.setFromMatrixPosition(cameraEl.object3D.matrixWorld);
       // console.log("Time: " + this.data.seconds 
@@ -53,13 +55,11 @@ AFRAME.registerComponent('room', {
       modal.setAttribute('position', {x: 0, y: 1.6, z: -2.5});
       // newSphere.setAttribute('position', cameraEl.object3D.position.x+offSet*i + ' 0 -2.5');
 
-      // modal.setAttribute('rotation', `${rotation.x.toFixed(2)} ${rotation.y.toFixed(2)} ${rotation.z.toFixed(2)}`);
+      // modal.setAttribute('rotation', rotation);
 
       modal.innerHTML = `
-      <a-entity>
           <a-image position="0 0.4 0" src="${source}" width="3" height="3"></a-image>
           <a-entity mixin="text" text="value: ${text}; color: black; width: 2.3;"></a-entity>
-      </a-entity>
       `;
       let parent = document.getElementById("parent");
       parent.appendChild(modal);
@@ -119,7 +119,7 @@ AFRAME.registerComponent('room', {
         // }
         entity.innerHTML = `
         <a-entity class="room-attribute">
-          <a-entity class="raycastable nav-button" mixin="navs">
+          <a-entity class="raycastable nav-button" mixin="interactions">
             <a-image src="${interaction.type.toLowerCase() === "nav" ? '#nav' : '#bow'}" width="${interaction.width}" height="${interaction.height}"></a-image>
           </a-entity>
         </a-entity>
