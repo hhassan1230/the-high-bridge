@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://hessvacio.com/pages/ChristmasInOvenland/index.html"><img src="https://media.giphy.com/media/oord2OYtZAoivERqVo/giphy.gif" alt="Highbridge" width=650></a>
+  <a href="https://hessvacio.com/pages/ChristmasInOvenland/index.html"><img src="https://media.giphy.com/media/oord2OYtZAoivERqVo/giphy.gif" alt="Highbridge" width=750 height=500></a>
   <br>
   Highbridge
   <br>
